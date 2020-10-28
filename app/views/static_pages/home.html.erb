@@ -1,0 +1,17 @@
+<h1>Bienvenue sur The Gossip Project</h1>
+<p>Le meilleur réseau social pour moussaillons !</p>
+
+<br>
+<h4>Les potins !</h4>
+<br>
+<% Gossip.count.times do |i| %>
+
+  <div class="card" style="width : 60vh; margin-bottom : 10px;">
+    <div class="card-body">
+      <h5 class="card-title"><%= Gossip.find(i+1).user.first_name %> </h5>
+      <p class="card-text"><%= Gossip.find(i+1).title %> </p>  
+      <%= link_to "Voir plus", gossip_path(Gossip.find(i + 1).id), class: "card-text"%>  
+    </div>
+  </div>
+  
+<% end %>
