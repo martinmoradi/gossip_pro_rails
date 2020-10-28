@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   get 'welcome/:name', to: 'static_pages#welcome'
   get 'static_pages/gossip/:gossip_id', to: 'static_pages#gossip', as: 'gossip'
   get 'static_pages/author/:author_id', to: 'static_pages#author', as: 'author'
-  
+
+  resources :gossips
 end

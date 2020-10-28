@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
   def welcome
     @name = params[:name]
   end
-  
+
   def gossip
     @gossip_id = params[:gossip_id]
   end
