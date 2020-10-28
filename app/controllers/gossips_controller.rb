@@ -8,10 +8,10 @@ class GossipsController < ApplicationController
   def create
     @gossip = Gossip.new('title' => params[:title], 'content' => params[:content], user_id: 1)
     if @gossip.save
-      flash[:notice]
+      flash[:notice] = "Potin enregistré !"
       redirect_to home_path
     else
-      flash[:error]
+      flash[:alert] = "Erreur, le potin n'a pas été enregistré"
       puts @gossip.errors.messages
       render 'new'
     end
