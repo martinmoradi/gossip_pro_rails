@@ -1,5 +1,5 @@
 class GossipsController < ApplicationController
-  protect_from_forgery with: :exception
+  before_action :authenticate_user, only: [:new, :create, :show]
 
   def new
     @gossip = Gossip.new
@@ -27,22 +27,42 @@ class GossipsController < ApplicationController
 
   def edit
     @gossip = Gossip.find(params[:id])
+    if current_user.id == @gossip.user.id
+      @gossip = Gossip.find(params[:id])
+    else
+      redirect_to(gossip_path(params[:id]), notice: "Tu dois en être l'auteur du potin !")
+    end
   end
 
   def update
     @gossip = Gossip.find(params[:id])
-    if @gossip.update(title: params[:title], content: params[:content])
-      redirect_to(home_path, notice: 'Gossip modifié!')
+    if current_user.id == @gossip.user.id
+      @gossip = Gossip.find(params[:id])
+      if @gossip.update(title: params[:title], content: params[:content])
+        redirect_to(home_path, notice: 'Gossip modifié!')
+      else
+        render :edit
+      end
     else
-      render :edit
+     redirect_to(gossip_path(params[:id]), notice: "Tu dois en être l'auteur du potin !")
     end
   end
 
   def destroy
     @gossip = Gossip.find(params[:id])
-    @gossip.destroy
-    redirect_to(home_path, notice: 'Gossip supprimé!')
+    if current_user.id == @gossip.user.id
+      @gossip = Gossip.find(params[:id])
+      @gossip.destroy
+      redirect_to(home_path, notice: 'Gossip supprimé!')
+    else
+      redirect_to(gossip_path(params[:id]), notice: "Tu dois en être l'auteur du potin !")
+    end
   end
 
+  def authenticate_user
+    unless current_user
+      redirect_to(new_session_path, notice: 'Vous devez être connecté')
+    end
+  end
 
 end
