@@ -1,0 +1,15 @@
+<h2>Connectez-vous:</h2>
+
+<%= form_tag sessions_path do |form| %>
+  <div class=”field”>
+    <%= label_tag :email %>
+    <%= text_field_tag :email, "", autofocus: true, class: "form-control" %>
+  </div>
+  <div class=”field” style="margin-top: 3rem;">
+    <%= label_tag :password %>
+    <%= password_field_tag :password, "",  class: "form-control" %>
+  </div>
+  <div class=”actions” style="margin-top: 3rem;">
+    <%= submit_tag "Se connecter", class: "btn btn-primary" %>
+  </div>
+<% end %>

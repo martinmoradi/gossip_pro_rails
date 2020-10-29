@@ -1,0 +1,21 @@
+<h2 style="margin-bottom: 50px;">Potin n° <%= @gossip.id %> </h2>
+ 
+
+<div>
+  <h5>Titre :</h5>
+  <p><%= @gossip.title %> </p>
+  <h5>Contenu :</h5>
+  <p> <%= @gossip.content %>  </p>
+  <h5>L'auteur :</h5>
+  <p><%= @gossip.user.first_name %><%= @gossip.user.last_name %> </p>
+  <h5>Ville de l'auteur :</h5>
+  <p> <%= @gossip.user.city.name %>  </p>
+</div>
+
+
+<div>
+  <p><%= link_to "En savoir plus sur l'auteur", user_path(@gossip.user.id)%></p>
+  <p class="lead mt-3 mb-4 ml-3 text-center"><%= link_to "Retour à l'accueil", home_path, :class => "btn btn-secondary" %></p>
+  <p class="lead mt-3 mb-4 ml-3 text-center"><%= link_to "Editer", edit_gossip_path, :class => "btn btn-warning" %></p>
+ 
+</div>

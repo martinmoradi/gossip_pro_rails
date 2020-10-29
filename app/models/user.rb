@@ -5,12 +5,9 @@ class User < ApplicationRecord
   has_many :received_messages, foreign_key: 'recipient_id', class_name: "PrivateMessage"
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :description, presence: true, length: { in: 10..100 }
   validates :email,
     presence: true,
-    uniqueness: true,
-    format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: 'please enter a correct email adress' }
-  validates :age,
-    presence: true,
-    numericality: { only_integer: true, message: 'only numbers' }
+    uniqueness: true
+  validates :password, presence: true, length: { minimum: 6 }
+  has_secure_password
 end
