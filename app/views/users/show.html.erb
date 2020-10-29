@@ -1,0 +1,17 @@
+<h2 style="margin-bottom: 2rem;">Page utilisateur</h2>
+ 
+
+<div>
+  <h5>Prénom :</h5>
+  <p><%= @user.first_name %> </p>
+  <h5>Nom :</h5>
+  <p><%= @user.last_name %> </p>
+  <h5>Description :</h5>
+   <p><%= @user.description %> </p>
+  <h5>Email :</h5>
+  <p><%= @user.email %> </p>
+  <h5>Age :</h5>
+  <p> <%= @user.age %>  </p>
+  <h5>Ville :</h5>
+  <p> <%= @user.city.name %>  </p>
+</div>

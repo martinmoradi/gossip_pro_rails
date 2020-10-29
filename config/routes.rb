@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   get 'static_pages/author/:author_id', to: 'static_pages#author', as: 'author'
 
   resources :gossips
+  resources :users
+  resources :cities, only: [:show]
+  resources :sessions, only: [:new, :create, :destroy]
 end

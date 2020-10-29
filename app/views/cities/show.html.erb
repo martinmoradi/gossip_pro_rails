@@ -1,0 +1,9 @@
+<h2 style="margin-bottom: 2rem;">Page de la ville <%= @city.name %></h2>
+<% @gossips.each do |gossip| %>
+  <div class="card" style="width : 60vh; margin-bottom : 10px;">
+    <div class="card-body">
+      <h5 class="card-title"><%= gossip.title %> </h5>
+      <p class="card-text"><%= gossip.content %> </p>
+    </div>
+  </div>
+<% end %>
