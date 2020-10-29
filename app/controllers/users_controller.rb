@@ -12,7 +12,6 @@ class UsersController < ApplicationController
     @user = User.new(
       email: params[:email],
       password: params[:password],
-      password_confirmation: params[:password_confirmation],
       city_id: 1,
       description: params[:description],
       age: params[:age],
@@ -20,6 +19,7 @@ class UsersController < ApplicationController
       last_name: params[:last_name]
     )
     if @user.save
+      session[:user_id] = @user.id
       flash[:notice] = "Utilisateur enregistré !"
       redirect_to home_path
     else

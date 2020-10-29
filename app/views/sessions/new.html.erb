@@ -1,2 +1,14 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<h2>Connectez-vous:</h2>
+<%= form_for :login do |f| %>
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email, autofocus: true, class: "form-control" %>
+  </div>
+  <div style="margin-top: 2rem;">
+    <%= f.label :password %>
+    <%= f.password_field :password, class: "form-control" %>
+  </div>
+  <div style="margin-top: 2rem;">
+    <%= f.submit "Se connecter", class: "btn btn-primary" %>
+  </div>
+<% end %>

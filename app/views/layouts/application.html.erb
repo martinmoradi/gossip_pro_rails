@@ -28,17 +28,17 @@
         </ul>
       </div>
     </nav>
-    <%= link_to "Creation compte", new_user_path, :class => "btn btn-outline-primary space_left_button" %>
-    <% if flash[:notice]%>
-      <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <%= flash[:notice] %>
-      </div>
-    <% elsif flash[:alert] %>
-      <div class="alert alert-alert">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <%= flash[:alert] %>
-      </div>
+    <% if current_user %>
+      <%= link_to "Déconnexion", logout_path, method: :delete, :class => "btn btn-outline-primary space_left_button" %>
+    <% else  %>
+      <%= link_to "Inscription", signup_path, :class => "btn btn-outline-primary space_left_button" %>
+      <%= link_to "Connection", login_path, :class => "btn btn-outline-primary space_left_button" %>
+    <% end %>
+    <% if notice %>
+      <%= notice %>
+    <% end %>
+    <% if alert %>
+      <%= alert %>
     <% end %>
     <div class="container" style="padding-top: 5rem;">
       <%= yield %>
