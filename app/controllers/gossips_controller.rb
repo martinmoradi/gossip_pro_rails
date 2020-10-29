@@ -10,7 +10,7 @@ class GossipsController < ApplicationController
   end
 
   def create
-    @gossip = Gossip.new('title' => params[:title], 'content' => params[:content], user_id: 1)
+    @gossip = Gossip.new('title' => params[:title], 'content' => params[:content], user_id: current_user[:id])
     if @gossip.save
       flash[:notice] = "Potin enregistré !"
       redirect_to home_path
